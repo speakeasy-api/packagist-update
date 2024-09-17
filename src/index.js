@@ -15,7 +15,14 @@ async function run() {
   const apiToken = core.getInput("api_token");
   let packageName = core.getInput("package_name");
   const baseUrl = core.getInput("package_base_url");
-
+  console.log(
+    "Running packagist update: ",
+    domain,
+    username,
+    apiToken,
+    packageName,
+    baseUrl
+  );
   if (!packageName || packageName === "") {
     let buff = undefined;
     try {
