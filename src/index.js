@@ -64,6 +64,7 @@ async function run() {
 }
 
 async function update(domain, packageName, username, apiToken, request) {
+  core.debug(`Test test test ${apiToken}:${username}`);
   core.debug(`Sending request to update ${packageName} package`);
 
   const resp = await fetch(
