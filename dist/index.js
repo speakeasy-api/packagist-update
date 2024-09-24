@@ -6781,6 +6781,14 @@ async function run() {
   const apiToken = core.getInput("api_token");
   let packageName = core.getInput("package_name");
   const baseUrl = core.getInput("package_base_url");
+  core.debug(
+    "Running packagist update: ",
+    domain,
+    username,
+    apiToken,
+    packageName,
+    baseUrl
+  );
 
   if (!packageName || packageName === "") {
     let buff = undefined;
@@ -6807,7 +6815,7 @@ async function run() {
       "Content-Type": "application/json",
     },
   };
-
+  core.debug(`About to send: ${JSON.stringify(request)}`);
   try {
     await update(domain, packageName, username, apiToken, request);
   } catch (e) {
@@ -6822,6 +6830,7 @@ async function run() {
 }
 
 async function update(domain, packageName, username, apiToken, request) {
+  core.debug(`Test test test ${apiToken}:${username}`);
   core.debug(`Sending request to update ${packageName} package`);
 
   const resp = await fetch(
