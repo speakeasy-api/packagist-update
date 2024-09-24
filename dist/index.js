@@ -6832,11 +6832,9 @@ async function run() {
 async function update(domain, packageName, username, apiToken, request) {
   core.debug(`Test test test ${apiToken}:${username}`);
   core.debug(`Sending request to update ${packageName} package`);
-
-  const resp = await fetch(
-    `https://${domain}/api/update-package?username=${username}&apiToken=${apiToken}`,
-    request
-  );
+  const fullUrl = `https://${domain}/api/update-package?username=${username}&apiToken=${apiToken}`;
+  core.debug(`full url: ${fullUrl}`);
+  const resp = await fetch(fullUrl, request);
 
   if (!resp.ok) {
     if (resp.status == 404) {
