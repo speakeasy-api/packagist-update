@@ -27,7 +27,7 @@ inputs:
     description: "The github repository name"
     required: true
     default: ""
-  repository_url:
+  repository_base_url:
     description: "The github repository base_url"
     required: true
     default: ""
