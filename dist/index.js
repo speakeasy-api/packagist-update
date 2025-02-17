@@ -6780,7 +6780,8 @@ async function run() {
   const username = core.getInput("username");
   const apiToken = core.getInput("api_token");
   let packageName = core.getInput("package_name");
-  const baseUrl = core.getInput("package_base_url");
+  let repositoryName = core.getInput("repository_name");
+  const baseUrl = core.getInput("repository_base_url");
 
   if (!packageName || packageName === "") {
     let buff = undefined;
@@ -6802,7 +6803,7 @@ async function run() {
 
   const request = {
     method: "POST",
-    body: `{"repository":{"url":"${baseUrl}/${packageName}"}}`,
+    body: `{"repository":{"url":"${baseUrl}/${repositoryName}"}}`,
     headers: {
       "Content-Type": "application/json",
     },
